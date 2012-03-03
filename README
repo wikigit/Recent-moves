@@ -1,0 +1,8 @@
+Recent Moves is a Toolserver tool for the English Wikipedia that
+reviews recent moves into the main article space from other
+namespaces. For more, see:
+
+http://toolserver.org/~dcoetzee/recentmoves/
+
+The PHP source for Recent Moves is available under the Simplified
+(2-clause) BSD License. It must be on Toolserver to run.
