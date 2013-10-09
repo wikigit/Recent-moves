@@ -33,7 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <p>If you have any questions or suggestions about Recent Moves, please contact its author Derrick Coetzee at <a href="http://en.wikipedia.org/wiki/User_talk:Dcoetzee">his talk page on English Wikipedia</a>.</p>
 
-<p>The PHP source for Recent Moves is available under the <a href="http://www.opensource.org/licenses/bsd-license.php">Simplified BSD License</a>. It must be on Toolserver to run. (<a href="../../downloads/recent_moves.tar.gz">.tar.gz</a>) (<a href="../../downloads/recent_moves.zip">.zip</a>)</p>
+<p>The PHP source for Recent Moves is available under the <a href="http://www.opensource.org/licenses/bsd-license.php">Simplified BSD License</a>. It must be on Toolserver to run. (<a href="../../downloads/recent_moves.tar.gz">.tar.gz</a>) (<a href="../../downloads/recent_moves.zip">.zip</a>) Latest version <a href="https://github.com/wikigit/Recent-moves">available from Github.</p>
 
 <a href="../"><b>Back to Recent Moves</b></a>
 

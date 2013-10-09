@@ -158,7 +158,8 @@ do {
 $last_count = $count;
 $query = 'SELECT log_timestamp, log_namespace, log_title, log_params, log_comment, log_user, user_name ' .
          'FROM logging INNER JOIN user ON log_user=user_id ' .
-         'WHERE log_type=\'move\' AND log_namespace <> 0 AND log_params NOT LIKE \'%:%\' ' . $conditions .
+#         'WHERE log_type=\'move\' AND log_namespace <> 0 AND log_params NOT LIKE \'%:%\' ' . $conditions .
+         'WHERE log_type=\'move\' AND log_namespace <> 0 ' . $conditions .
          'ORDER BY log_timestamp ' . ($dir ? '' : 'DESC') . ' ' .
          'LIMIT ' . $adjusted_limit;
 
@@ -188,8 +189,13 @@ $text_items = array();
 $newer_timestamp = '';
 while ($count < $limit && $row = mysql_fetch_array($result)) {
       $old_title = $namespaces[$row['log_namespace']] . ':' . $row['log_title'];
-      $log_params = preg_split("/\\n/", $row['log_params']);
-      $new_title = $log_params[0];
+      # $log_params = preg_split("/\\n/", $row['log_params']);
+      # $new_title = $log_params[0];
+      $log_params = preg_match('/target";s:[0-9]+:"([^"]*)/', $row['log_params'], $log_param_matches);
+      $new_title = $log_param_matches[1];
+      if (strpos($new_title, ':') !== false) {
+          continue;
+      }
       $user_display = htmlspecialchars($row['user_name']);
       $user_url = wiki_urlencode($row['user_name']);
       $user_id = $row['log_user'];
@@ -233,9 +239,10 @@ if ($dir) {
     $text = join('', $text_items);
 }
 
-
 $adjusted_limit *= 2;
-} while ($hidepatrolled && $count != $last_count && $count < $limit);
+
+# } while ($hidepatrolled && $count != $last_count && $count < $limit);
+} while ($count != $last_count && $count < $limit);
 
 # $paging_controls .= '<a href="' . build_url($namespace, $dir, $offset, $limit, $hidepatrolled) . '">text</a>';
 
